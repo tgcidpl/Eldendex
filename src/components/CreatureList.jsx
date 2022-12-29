@@ -2,10 +2,12 @@ import React from "react";
 
 export default function CreatureList({ creature }) {
   return (
-    <div>
+    <ul>
       {creature.map((c) => (
-        <div key={c.id}>{c.name}</div>
+        <li key={c.id}>
+          <span>{c.name}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
