@@ -19,7 +19,7 @@ const Form = () => {
   }
 
   return (
-    <div className="flex flex-col w-56">
+    <div className="flex flex-col w-56 bg-slate-500 ">
       <label className="text-center">Creature Name:</label>
       <input className="border-2 border-gray-400 rounded" id="search"></input>
       <button className="hover:bg-orange-700 rounded" onClick={getCreature}>

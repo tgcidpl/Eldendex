@@ -1,20 +1,44 @@
-import { useState } from "react";
-import Form from "./components/Form";
+import React, { useState, useEffect } from "react";
+import CreatureList from "./components/CreatureList";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [creature, setCreature] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  const currentPageUrl =
+    `https://eldenring.fanapis.com/api/creatures?limit=20&page=` + currentPage;
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get(currentPageUrl).then((res) => {
+      setLoading(false);
+      setCreature(res.data.data.map((c) => c));
+    });
+  }, [currentPage]);
+
+  if (loading) return "Loading...";
 
   return (
     <div>
-      <Form />
-      <div className="text-center p-8 bg-slate-800 text-red-700 text-4xl">
-        <h1>YOU DIED</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            {count} times
-          </button>
-        </div>
-      </div>
+      <CreatureList creature={creature} />
+      {!currentPage <= 0 && (
+        <button
+          className="border-2 p-1 m-2 border-gray-400 rounded"
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          Previous Page
+        </button>
+      )}
+      {currentPage < 5 && (
+        <button
+          className="border-2 p-1 m-2 border-gray-400 rounded"
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          Next Page
+        </button>
+      )}
     </div>
   );
 }
