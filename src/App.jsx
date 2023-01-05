@@ -19,6 +19,7 @@ function App() {
     });
   }, [currentPage]);
 
+  // TODO: below must filter on click from list
   const filteredCreatures = creatures.filter(
     (c) => c.id === `17f69ee8f6el0i6ysmpe59c9uqwri4`
   );
