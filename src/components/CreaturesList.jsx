@@ -10,13 +10,13 @@ export default function CreaturesList({
       <ul>
         {creatures.map((c, index) => (
           <li className="p-1 hover:bg-background-light rounded" key={c.id}>
-            <span
+            <div
               onClick={() => {
                 setCurrentCreature(index), setActive(true);
               }}
             >
               {c.name}
-            </span>
+            </div>
           </li>
         ))}
       </ul>

@@ -3,7 +3,7 @@ import CreaturesList from "./CreaturesList";
 import axios from "axios";
 import Card from "./Card";
 
-function Creatures() {
+function Creatures({ type }) {
   const [creatures, setCreatures] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,10 @@ function Creatures() {
   const [active, setActive] = useState(false);
 
   const currentPageUrl =
-    `https://eldenring.fanapis.com/api/creatures?limit=16&page=` + currentPage;
+    `https://eldenring.fanapis.com/api/` +
+    type +
+    `?limit=16&page=` +
+    currentPage;
 
   useEffect(() => {
     setLoading(true);
@@ -20,7 +23,7 @@ function Creatures() {
       setCreatures(res.data.data.map((c) => c));
     });
   }, [currentPage]);
-  console.log(creatures.length);
+
   if (loading) return "Loading...";
   return (
     <div className="relative bg-gradient-to-b from-background-dark to-background-light h-[100vh] p-2">

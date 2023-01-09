@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Creatures from "./components/Creatures";
 
 function App() {
-  return <Creatures />;
+  const [type, setType] = useState("creatures");
+
+  return <Creatures type={type} />;
 }
 
 export default App;
