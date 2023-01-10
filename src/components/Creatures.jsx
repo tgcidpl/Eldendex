@@ -10,11 +10,13 @@ function Creatures({ type }) {
   const [currentCreature, setCurrentCreature] = useState([0]);
   const [active, setActive] = useState(false);
 
-  const currentPageUrl =
+  let currentPageUrl =
     `https://eldenring.fanapis.com/api/` +
     type +
     `?limit=16&page=` +
     currentPage;
+
+  // below request activates upon currentPage change via pagination or type change via Navbar.
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +24,7 @@ function Creatures({ type }) {
       setLoading(false);
       setCreatures(res.data.data.map((c) => c));
     });
-  }, [currentPage]);
+  }, [currentPage, type]);
 
   if (loading)
     return (

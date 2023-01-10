@@ -1,25 +1,44 @@
 import React, { useState } from "react";
 
-function Navbar() {
+function Navbar({ setType, type }) {
   const [active, setActive] = useState(false);
 
   const toggleActive = () => {
     setActive((current) => !current);
   };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setType(e.target.innerHTML.toLowerCase());
+    setActive((current) => !current);
+  };
+
   return (
     <nav className="container">
       {active ? (
         <div className="absolute top-24 z-10 flex flex-col bg-background-dark text-2xl">
-          <button className="p-6 border-b hover:bg-background-light ">
+          <button
+            className="p-6 border-b hover:bg-background-light "
+            onClick={handleChange}
+          >
             Creatures
           </button>
-          <button className="p-6 border-b hover:bg-background-light">
+          <button
+            className="p-6 border-b hover:bg-background-light"
+            onClick={handleChange}
+          >
             Bosses
           </button>
-          <button className="p-6 border-b hover:bg-background-light">
+          <button
+            className="p-6 border-b hover:bg-background-light"
+            onClick={handleChange}
+          >
             NPCs
           </button>
-          <button className="p-6 border-b hover:bg-background-light">
+          <button
+            className="p-6 border-b hover:bg-background-light"
+            onClick={handleChange}
+          >
             Locations
           </button>
           <p className="text-sm p-2 text-center">

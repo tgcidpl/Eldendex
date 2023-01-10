@@ -2,9 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeInOpacity {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
 body {
   font-family: 'EB Garamond', serif;
   color: hsl(68.57,2.81%,70%);
   text-shadow: 1px 1px 2px black;
   background-color: hsl(72,11.11%,8.82%);
+}
+div, button {
+  animation: fadeInOpacity 0.5s;
 }

@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="container">
-      <Navbar />
+      <Navbar setType={setType} type={type} />
       <Creatures type={type} />
     </div>
   );
