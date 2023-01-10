@@ -28,7 +28,7 @@ function Creatures({ type }) {
 
   if (loading)
     return (
-      <div className="h-[100vh] w-[100vw] bg-gradient-to-b from-background-dark to-background-light text-xl p-4">
+      <div className="h-[100vh] w-[100vw] bg-gradient-to-b from-background-dark to-background-light text-xl p-4 sm:mx-auto sm:max-w-[700px]">
         Loading...
       </div>
     );
