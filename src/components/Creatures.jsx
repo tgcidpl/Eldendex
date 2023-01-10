@@ -42,7 +42,7 @@ function Creatures({ type }) {
 
       {!currentPage <= 0 && (
         <button
-          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-lg hover:bg-background-light "
+          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-lg hover:bg-background-light sm:text-2xl "
           onClick={() => setCurrentPage(currentPage - 1)}
         >
           Previous Page
@@ -50,7 +50,7 @@ function Creatures({ type }) {
       )}
       {creatures.length === 16 && (
         <button
-          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light "
+          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           Next Page

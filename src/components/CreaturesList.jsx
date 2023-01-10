@@ -10,7 +10,7 @@ export default function CreaturesList({
       <ul>
         {creatures.map((c, index) => (
           <li
-            className="p-1 max-w-[400px] hover:bg-background-light rounded cursor-pointer"
+            className="p-1 max-w-[400px] hover:bg-background-light rounded cursor-pointer sm:text-xl 2xl:text-2xl 2xl:max-w-[600px]"
             key={c.id}
           >
             <div
