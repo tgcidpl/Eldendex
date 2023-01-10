@@ -6,10 +6,10 @@ function App() {
   const [type, setType] = useState("creatures");
 
   return (
-    <>
+    <div className="container">
       <Navbar />
       <Creatures type={type} />
-    </>
+    </div>
   );
 }
 
