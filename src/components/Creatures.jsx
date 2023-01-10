@@ -24,7 +24,12 @@ function Creatures({ type }) {
     });
   }, [currentPage]);
 
-  if (loading) return "Loading...";
+  if (loading)
+    return (
+      <div className="h-[100vh] w-[100vw] bg-gradient-to-b from-background-dark to-background-light text-xl p-4">
+        Loading...
+      </div>
+    );
   return (
     <div className="relative bg-gradient-to-b from-background-dark to-background-light h-[100vh] p-2">
       <CreaturesList
