@@ -12,42 +12,48 @@ function Navbar({ setType, type }) {
     setType(e.target.innerHTML.toLowerCase());
     setActive((current) => !current);
   };
-
+  const sections = [
+    `Ammos`,
+    `Armors`,
+    `Ashes`,
+    `Bosses`,
+    `Classes`,
+    `Creatures`,
+    `Incantations`,
+    `Items`,
+    `Locations`,
+    `NPCs`,
+    `Shields`,
+    `Sorceries`,
+    `Spirits`,
+    `Talismans`,
+    `Weapons`,
+  ];
   return (
     <nav className="container">
-      {active ? (
-        <div className="absolute top-24 z-10 xl:right-[34%] flex flex-col sm:right-0 bg-background-dark text-2xl sm:max-w-[460px]">
+      <div
+        className={`absolute top-24 z-10 flex-col sm:right-0 lg:right-[20%] xl:flex xl:top-0 xl:right-0 bg-background-dark text-2xl sm:max-w-[460px] ${
+          active ? "flex" : "hidden"
+        }`}
+      >
+        {sections.map((s, index) => (
           <button
-            className="p-6 border-b hover:bg-background-light "
+            key={index}
+            className="p-4 border-b hover:bg-background-light "
             onClick={handleChange}
           >
-            Creatures
+            {s}
           </button>
-          <button
-            className="p-6 border-b hover:bg-background-light"
-            onClick={handleChange}
-          >
-            Bosses
-          </button>
-          <button
-            className="p-6 border-b hover:bg-background-light"
-            onClick={handleChange}
-          >
-            NPCs
-          </button>
-          <button
-            className="p-6 border-b hover:bg-background-light"
-            onClick={handleChange}
-          >
-            Locations
-          </button>
-          <p className="text-sm p-2 text-center">
-            Eldendex is a non-profit project made for educational purposes. All
-            ELDEN RING™ copyrights belong to ©BANDAI NAMCO Entertainment Inc.
-          </p>
-        </div>
-      ) : null}
-      <div className="absolute top-10 right-10 xl:right-[34%] z-10 p-2 hover:animate-pulse flex sm:right-60">
+        ))}
+        <p className="text-sm p-2 text-center">
+          Eldendex is a non-profit project made for educational purposes. All
+          ELDEN RING™ copyrights belong to ©BANDAI NAMCO Entertainment Inc.
+        </p>
+      </div>
+
+      <div
+        className={`absolute top-10 right-10 z-10 p-2 hover:animate-pulse flex sm:right-60 xl:hidden`}
+      >
         <div className="space-y-2" onClick={toggleActive}>
           <span className="block w-8 h-1 bg-background-light "></span>
           <span className="block w-8 h-1 bg-background-light "></span>
