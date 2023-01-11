@@ -33,7 +33,7 @@ function Creatures({ type }) {
       </div>
     );
   return (
-    <div className="relative h-[100vh] sm:h-auto bg-gradient-to-b from-background-dark to-background-light p-2 container sm:mx-auto sm:max-w-[700px]">
+    <div className="relative h-[100vh] sm:h-auto xl:h-[100vh] bg-gradient-to-b from-background-dark to-background-light p-2 container sm:mx-auto sm:max-w-[700px]">
       <CreaturesList
         creatures={creatures}
         setCurrentCreature={setCurrentCreature}

@@ -6,11 +6,11 @@ export default function CreaturesList({
   setActive,
 }) {
   return (
-    <div className="relative m-2 text-lg ">
+    <div className="relative m-2">
       <ul>
         {creatures.map((c, index) => (
           <li
-            className="p-1 max-w-[400px] hover:bg-background-light rounded cursor-pointer sm:text-xl 2xl:text-2xl 2xl:max-w-[600px]"
+            className="p-1 max-w-[400px] hover:bg-background-light rounded cursor-pointer sm:text-xl xl:text-2xl 2xl:max-w-[600px]"
             key={c.id}
           >
             <div
