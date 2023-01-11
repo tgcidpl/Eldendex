@@ -56,6 +56,14 @@ function Creatures({ type }) {
           Next Page
         </button>
       )}
+      {creatures.length < 16 && (
+        <button
+          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
+          onClick={() => setCurrentPage(currentPage === 0)}
+        >
+          First Page
+        </button>
+      )}
       {active ? (
         <Card
           id={creatures[currentCreature].id}
