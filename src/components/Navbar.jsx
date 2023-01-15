@@ -32,7 +32,7 @@ function Navbar({ setType, type }) {
   return (
     <nav className="container">
       <div
-        className={`absolute top-24 z-10 flex-col sm:right-0 lg:right-[20%] xl:flex xl:top-0 xl:right-0 bg-background-dark text-2xl sm:max-w-[460px] ${
+        className={`absolute top-24 z-10 flex-col sm:right-0 lg:right-[20%] xl:flex xl:top-0 xl:right-0 overflow-y-auto max-h-[100vh] bg-background-dark text-2xl sm:max-w-[460px] ${
           active ? "flex" : "hidden"
         }`}
       >
