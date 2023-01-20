@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ListPrint from "./ListPrint";
 import axios from "axios";
 import Card from "./Card";
-import Search from "./Search";
 
 function MainBrowser({ type }) {
   const [list, setList] = useState([]);
@@ -10,21 +9,6 @@ function MainBrowser({ type }) {
   const [loading, setLoading] = useState(true);
   const [currentItem, setCurrentItem] = useState([0]);
   const [active, setActive] = useState(false);
-
-  const [fullTypeList, setFullTypeList] = useState([]);
-
-  let typeUrl = `https://eldenring.fanapis.com/api/` + type;
-
-  console.log("typeUrl:", typeUrl);
-
-  useEffect(() => {
-    setLoading(true);
-    axios.get(typeUrl).then((res) => {
-      setLoading(false);
-      setFullTypeList(res.data.data.map((c) => c));
-      console.log("fullTypeList:", fullTypeList);
-    });
-  }, [currentPage, type]);
 
   let currentPageUrl =
     `https://eldenring.fanapis.com/api/` +
@@ -91,14 +75,6 @@ function MainBrowser({ type }) {
           setActive={setActive}
         />
       ) : null}
-      <Search
-        setCurrentItem={setCurrentItem}
-        currentItem={currentItem}
-        list={list}
-        setList={setList}
-        type={type}
-        setLoading={setLoading}
-      />
     </div>
   );
 }
