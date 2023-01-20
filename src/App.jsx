@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Creatures from "./components/Creatures";
+import MainBrowser from "./components/MainBrowser";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <Navbar setType={setType} type={type} />
-      <Creatures type={type} />
+      <MainBrowser type={type} />
     </div>
   );
 }

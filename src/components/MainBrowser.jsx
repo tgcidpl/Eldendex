@@ -1,14 +1,30 @@
 import React, { useState, useEffect } from "react";
-import CreaturesList from "./CreaturesList";
+import ListPrint from "./ListPrint";
 import axios from "axios";
 import Card from "./Card";
+import Search from "./Search";
 
-function Creatures({ type }) {
-  const [creatures, setCreatures] = useState([]);
+function MainBrowser({ type }) {
+  const [list, setList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [currentCreature, setCurrentCreature] = useState([0]);
+  const [currentItem, setCurrentItem] = useState([0]);
   const [active, setActive] = useState(false);
+
+  const [fullTypeList, setFullTypeList] = useState([]);
+
+  let typeUrl = `https://eldenring.fanapis.com/api/` + type;
+
+  console.log("typeUrl:", typeUrl);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get(typeUrl).then((res) => {
+      setLoading(false);
+      setFullTypeList(res.data.data.map((c) => c));
+      console.log("fullTypeList:", fullTypeList);
+    });
+  }, [currentPage, type]);
 
   let currentPageUrl =
     `https://eldenring.fanapis.com/api/` +
@@ -22,7 +38,7 @@ function Creatures({ type }) {
     setLoading(true);
     axios.get(currentPageUrl).then((res) => {
       setLoading(false);
-      setCreatures(res.data.data.map((c) => c));
+      setList(res.data.data.map((c) => c));
     });
   }, [currentPage, type]);
 
@@ -34,9 +50,9 @@ function Creatures({ type }) {
     );
   return (
     <div className="relative h-[100vh] sm:h-auto xl:h-[100vh] bg-gradient-to-b from-background-dark to-background-light p-2 container sm:mx-auto sm:max-w-[700px]">
-      <CreaturesList
-        creatures={creatures}
-        setCurrentCreature={setCurrentCreature}
+      <ListPrint
+        list={list}
+        setCurrentItem={setCurrentItem}
         setActive={setActive}
       />
 
@@ -48,7 +64,7 @@ function Creatures({ type }) {
           Previous Page
         </button>
       )}
-      {creatures.length === 16 && (
+      {list.length === 16 && (
         <button
           className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
           onClick={() => setCurrentPage(currentPage + 1)}
@@ -56,7 +72,7 @@ function Creatures({ type }) {
           Next Page
         </button>
       )}
-      {creatures.length < 16 && (
+      {list.length < 16 && (
         <button
           className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
           onClick={() => setCurrentPage(currentPage === 0)}
@@ -66,17 +82,25 @@ function Creatures({ type }) {
       )}
       {active ? (
         <Card
-          id={creatures[currentCreature].id}
-          name={creatures[currentCreature].name}
-          image={creatures[currentCreature].image}
-          description={creatures[currentCreature].description}
-          location={creatures[currentCreature].location}
-          drops={creatures[currentCreature].drops}
+          id={list[currentItem].id}
+          name={list[currentItem].name}
+          image={list[currentItem].image}
+          description={list[currentItem].description}
+          location={list[currentItem].location}
+          drops={list[currentItem].drops}
           setActive={setActive}
         />
       ) : null}
+      <Search
+        setCurrentItem={setCurrentItem}
+        currentItem={currentItem}
+        list={list}
+        setList={setList}
+        type={type}
+        setLoading={setLoading}
+      />
     </div>
   );
 }
 
-export default Creatures;
+export default MainBrowser;

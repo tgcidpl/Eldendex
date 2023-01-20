@@ -1,21 +1,17 @@
 import React from "react";
 
-export default function CreaturesList({
-  creatures,
-  setCurrentCreature,
-  setActive,
-}) {
+export default function ListPrint({ list, setCurrentItem, setActive }) {
   return (
     <div className="relative m-2">
       <ul>
-        {creatures.map((c, index) => (
+        {list.map((c, index) => (
           <li
             className="p-1 max-w-[400px] hover:bg-background-light rounded cursor-pointer sm:text-xl xl:text-2xl 2xl:max-w-[600px]"
             key={c.id}
           >
             <div
               onClick={() => {
-                setCurrentCreature(index), setActive(true);
+                setCurrentItem(index), setActive(true);
               }}
             >
               {c.name}

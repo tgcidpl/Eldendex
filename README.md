@@ -1,5 +1,5 @@
 # Eldendex
-Pokedex-style library for browsing Elden Ring creatures, bosses, npcs, and locations using Elden Ring API: https://docs.eldenring.fanapis.com/docs 
+Pokedex-style library for browsing Elden Ring list, bosses, npcs, and locations using Elden Ring API: https://docs.eldenring.fanapis.com/docs 
 
 Technologies:
 Vite
