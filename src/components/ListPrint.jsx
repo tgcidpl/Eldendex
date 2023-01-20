@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ListPrint({ list, setCurrentItem, setActive }) {
+export default function ListPrint({ list, setActive, setItemData }) {
   return (
     <div className="relative m-2">
       <ul>
@@ -11,7 +11,7 @@ export default function ListPrint({ list, setCurrentItem, setActive }) {
           >
             <div
               onClick={() => {
-                setCurrentItem(index), setActive(true);
+                setItemData(list[index]), setActive(true);
               }}
             >
               {c.name}

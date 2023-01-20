@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import ListPrint from "./ListPrint";
 import axios from "axios";
 import Card from "./Card";
+import Search from "./Search";
 
 function MainBrowser({ type }) {
   const [list, setList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [currentItem, setCurrentItem] = useState([0]);
   const [active, setActive] = useState(false);
+  const [itemData, setItemData] = useState(null);
 
   let currentPageUrl =
     `https://eldenring.fanapis.com/api/` +
@@ -34,11 +35,7 @@ function MainBrowser({ type }) {
     );
   return (
     <div className="relative h-[100vh] sm:h-auto xl:h-[100vh] bg-gradient-to-b from-background-dark to-background-light p-2 container sm:mx-auto sm:max-w-[700px]">
-      <ListPrint
-        list={list}
-        setCurrentItem={setCurrentItem}
-        setActive={setActive}
-      />
+      <ListPrint list={list} setActive={setActive} setItemData={setItemData} />
 
       {!currentPage <= 0 && (
         <button
@@ -66,15 +63,22 @@ function MainBrowser({ type }) {
       )}
       {active ? (
         <Card
-          id={list[currentItem].id}
-          name={list[currentItem].name}
-          image={list[currentItem].image}
-          description={list[currentItem].description}
-          location={list[currentItem].location}
-          drops={list[currentItem].drops}
+          id={itemData.id}
+          name={itemData.name}
+          image={itemData.image}
+          description={itemData.description}
+          location={itemData.location}
+          drops={itemData.drops}
+          // id={list[currentItem].id}
+          // name={list[currentItem].name}
+          // image={list[currentItem].image}
+          // description={list[currentItem].description}
+          // location={list[currentItem].location}
+          // drops={list[currentItem].drops}
           setActive={setActive}
         />
       ) : null}
+      <Search type={type} itemData={itemData} setLoading={setLoading} />
     </div>
   );
 }
