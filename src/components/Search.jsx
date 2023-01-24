@@ -36,7 +36,7 @@ function Search({ type, setItemData, setLoading, setActive }) {
   return (
     <div>
       <div
-        className={`p-2 absolute top-[56%] left-4
+        className={`p-2 absolute top-[52%] left-4 z-10
       bg-background-dark rounded 
         ${searchActive ? "flex" : "hidden"}
       
