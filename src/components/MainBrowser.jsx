@@ -78,7 +78,12 @@ function MainBrowser({ type }) {
           setActive={setActive}
         />
       ) : null}
-      <Search type={type} itemData={itemData} setLoading={setLoading} />
+      <Search
+        type={type}
+        setItemData={setItemData}
+        setLoading={setLoading}
+        setActive={setActive}
+      />
     </div>
   );
 }
