@@ -53,7 +53,7 @@ function Navbar({ setType, type }) {
       </div>
 
       <div
-        className={`absolute top-10 right-10 z-10 p-2 hover:animate-pulse flex sm:right-60 xl:hidden`}
+        className={`absolute top-10 right-10 z-10 p-2 hover:animate-pulse cursor-pointer flex sm:right-60 xl:hidden`}
       >
         <div className="space-y-2" onClick={toggleActive}>
           <span className="block w-8 h-1 bg-background-light "></span>

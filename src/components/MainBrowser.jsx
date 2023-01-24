@@ -36,31 +36,38 @@ function MainBrowser({ type }) {
   return (
     <div className="relative h-[100vh] sm:h-auto xl:h-[100vh] bg-gradient-to-b from-background-dark to-background-light p-2 container sm:mx-auto sm:max-w-[700px]">
       <ListPrint list={list} setActive={setActive} setItemData={setItemData} />
-
-      {!currentPage <= 0 && (
-        <button
-          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-lg hover:bg-background-light sm:text-2xl "
-          onClick={() => setCurrentPage(currentPage - 1)}
-        >
-          Previous Page
-        </button>
-      )}
-      {list.length === 16 && (
-        <button
-          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
-          onClick={() => setCurrentPage(currentPage + 1)}
-        >
-          Next Page
-        </button>
-      )}
-      {list.length < 16 && (
-        <button
-          className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
-          onClick={() => setCurrentPage(currentPage === 0)}
-        >
-          First Page
-        </button>
-      )}
+      <div className="flex">
+        {!currentPage <= 0 && (
+          <button
+            className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-lg hover:bg-background-light sm:text-2xl "
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            Previous Page
+          </button>
+        )}
+        {list.length === 16 && (
+          <button
+            className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            Next Page
+          </button>
+        )}
+        {list.length < 16 && (
+          <button
+            className="border-2 px-2 m-2 bg-background-dark rounded text-lg shadow-l hover:bg-background-light sm:text-2xl "
+            onClick={() => setCurrentPage(currentPage === 0)}
+          >
+            First Page
+          </button>
+        )}
+        <Search
+          type={type}
+          setItemData={setItemData}
+          setLoading={setLoading}
+          setActive={setActive}
+        />
+      </div>
       {active ? (
         <Card
           id={itemData.id}
@@ -78,12 +85,6 @@ function MainBrowser({ type }) {
           setActive={setActive}
         />
       ) : null}
-      <Search
-        type={type}
-        setItemData={setItemData}
-        setLoading={setLoading}
-        setActive={setActive}
-      />
     </div>
   );
 }
