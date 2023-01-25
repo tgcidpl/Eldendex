@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Alert from "./Alert";
 
 function Search({ type, setItemData, setLoading, setActive }) {
   const [searchActive, setSearchActive] = useState(false);
+  const [alertActive, setAlertActive] = useState(false);
 
   const toggleSearchActive = () => {
     setSearchActive((current) => !current);
   };
+
+  const toggleAlertActive = () => {
+    setAlertActive((current) => !current);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault;
-
     if (searchField.value === "") {
-      alert("Please enter a name to search for.");
+      setAlertActive(true);
       return;
     }
     let itemName = searchField.value.replace(" ", "%20");
@@ -33,10 +39,17 @@ function Search({ type, setItemData, setLoading, setActive }) {
         alert("Not Found! Please check your spelling and try again.");
       });
   };
+
   return (
     <div>
+      {alertActive && (
+        <Alert
+          message="Please enter a name to search and try again."
+          toggleAlertActive={toggleAlertActive}
+        />
+      )}
       <div
-        className={`p-2 absolute top-[52%] left-4 z-10
+        className={`p-2 absolute top-[52%] left-4 z-5
       bg-background-dark rounded 
         ${searchActive ? "flex" : "hidden"}
       
